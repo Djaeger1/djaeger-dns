@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DJAEGER DNS — DNS Adblock Milik Sendiri</title>
+<style>
+  :root { --bg:#0b0e11; --card:#131820; --line:#232c38; --txt:#e8eef4; --dim:#9aa7b5; --acc:#2FE6A8; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--txt); font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; line-height:1.6; }
+  .wrap { max-width:860px; margin:0 auto; padding:32px 20px 64px; }
+  header { text-align:center; padding:40px 0 24px; }
+  h1 { margin:0 0 8px; font-size:2rem; letter-spacing:.5px; }
+  h1 .acc { color:var(--acc); }
+  p.sub { color:var(--dim); margin:0 0 24px; }
+  .badges { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:8px; }
+  .badge { border:1px solid var(--line); background:var(--card); border-radius:999px; padding:6px 14px; font-size:.85rem; color:var(--dim); }
+  .badge b { color:var(--acc); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card h2 { margin:0 0 10px; font-size:1.15rem; }
+  code.ep { display:block; background:#0b0e11; border:1px solid var(--line); border-radius:8px; padding:12px 14px; font-size:.92rem; color:var(--acc); word-break:break-all; user-select:all; }
+  pre { background:#0b0e11; border:1px solid var(--line); border-radius:8px; padding:12px 14px; overflow-x:auto; font-size:.85rem; }
+  ol,ul { margin:8px 0; padding-left:22px; }
+  li { margin:6px 0; }
+  a { color:var(--acc); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; }
+  footer { text-align:center; color:var(--dim); font-size:.85rem; margin-top:36px; }
+  .note { font-size:.88rem; color:var(--dim); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>DJAEGER <span class="acc">DNS</span></h1>
+    <p class="sub">DNS adblock milik sendiri — gratis, tanpa VPS, tanpa aplikasi tambahan.</p>
+    <div class="badges">
+      <span class="badge">Diblokir: <b>165 domain</b></span>
+      <span class="badge">Protokol: <b>DoH</b></span>
+      <span class="badge">Belajar: <b>MATA</b> 🔁</span>
+    </div>
+  </header>
+
+  <div class="card">
+    <h2>Endpoint</h2>
+    <code class="ep">https://dns9r.schatzrasta.workers.dev/dns-query</code>
+    <p class="note">DNS-over-HTTPS (RFC 8484). Domain iklan/tracker dibalas NXDOMAIN — mati di level DNS, sebelum sempat dimuat.</p>
+  </div>
+
+  <div class="card">
+    <h2>Cara pakai</h2>
+    <div class="grid">
+      <div>
+        <b>🛡 DJAEGER VPN</b>
+        <p class="note">Tambah ke config (Mihomo):</p>
+<pre>dns:
+  enable: true
+  nameserver:
+    - https://dns9r.schatzrasta.workers.dev/dns-query</pre>
+      </div>
+      <div>
+        <b>🌐 Chrome Android</b>
+        <ol class="note">
+          <li>Settings → Privacy and security</li>
+          <li>Use secure DNS → aktif</li>
+          <li>Choose another provider → tempel URL endpoint di atas</li>
+        </ol>
+      </div>
+      <div>
+        <b>📋 AdGuard / AdGuardHome</b>
+        <p class="note">Subscribe blocklist:</p>
+        <code class="ep">https://dns.djaeger.mooo.com/lists/djaeger.txt</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Blocklist yang belajar sendiri 🔁</h2>
+    <p>DJAEGER DNS tidak pakai list statis saja. 88 domain di dalamnya adalah hasil pembelajaran dari browsing asli — pipeline <b>MATA</b> (eye.sh di HP/STB) mencatat domain iklan yang benar-benar muncul, lalu disinkronkan ke DNS ini. Makin dipakai, makin pintar.</p>
+    <p><a href="/lists/djaeger.txt">Lihat daftar lengkap (format AdGuard)</a></p>
+  </div>
+
+  <div class="card">
+    <h2>Batas jujur</h2>
+    <ul class="note">
+      <li>100.000 query/hari (jatah gratis Cloudflare) — cukup untuk pribadi + lingkaran dekat.</li>
+      <li>Ini DoH, bukan DoT port 853 — tidak bisa dipasang di kolom "Private DNS" bawaan Android.</li>
+    </ul>
+  </div>
+
+  <footer>Bagian dari DJAEGER · dns.djaeger.mooo.com</footer>
+</div>
+</body>
+</html>
